@@ -27,13 +27,16 @@ def main(config_path: str = "configs/train_config.yaml"):
 
     df = load_data(config["data"]["dvc_path"])
     X_train, X_test, y_train, y_test = train_test_split_data(
-        df,
-        config["data"]["target"],
-        config["data"]["test_size"],
-        config["data"]["random_state"],
-    )
+    df,
+    config["data"]["target"],
+    config["data"]["test_size"],
+    config["model"]["random_state"],
+)
 
-    preprocessor, _, _ = build_preprocessor(df, config["data"]["target"])
+
+    preprocessor, _, _= build_preprocessor(df, config["data"]["target"])
+
+    print("CONFIG INSIDE TRAIN:", config)
 
     model = RandomForestClassifier(
         n_estimators=config["model"]["n_estimators"],
@@ -52,11 +55,9 @@ def main(config_path: str = "configs/train_config.yaml"):
     mlflow.set_experiment(config["experiment_name"])
 
     with mlflow.start_run():
-        # log hyperparameters
         for k, v in config["model"].items():
             mlflow.log_param(k, v)
 
-        # data version placeholder (you can inject DVC hash)
         mlflow.log_param("data_version", "dvc_heart_v1")
 
         pipeline.fit(X_train, y_train)
@@ -86,3 +87,4 @@ def main(config_path: str = "configs/train_config.yaml"):
 
 if __name__ == "__main__":
     main()
+

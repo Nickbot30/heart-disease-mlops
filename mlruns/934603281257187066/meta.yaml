@@ -1,0 +1,6 @@
+artifact_location: file:///Users/nick/Documents/heart-disease-mlops/mlruns/934603281257187066
+creation_time: 1784492746481
+experiment_id: '934603281257187066'
+last_update_time: 1784492746481
+lifecycle_stage: active
+name: heart_disease_baseline

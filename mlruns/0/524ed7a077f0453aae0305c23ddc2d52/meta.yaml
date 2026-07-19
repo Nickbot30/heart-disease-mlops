@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/nick/Documents/heart-disease-mlops/mlruns/0/524ed7a077f0453aae0305c23ddc2d52/artifacts
+end_time: 1784493275562
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 524ed7a077f0453aae0305c23ddc2d52
+run_name: model_evaluation
+run_uuid: 524ed7a077f0453aae0305c23ddc2d52
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1784493275555
+status: 3
+tags: []
+user_id: nick

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/nick/Documents/heart-disease-mlops/mlruns/934603281257187066/12662800ac944e39ac325ae696b81def/artifacts
+end_time: 1784492746567
+entry_point_name: ''
+experiment_id: '934603281257187066'
+lifecycle_stage: active
+run_id: 12662800ac944e39ac325ae696b81def
+run_name: lyrical-lark-702
+run_uuid: 12662800ac944e39ac325ae696b81def
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1784492746557
+status: 4
+tags: []
+user_id: nick

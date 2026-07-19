@@ -1,18 +1,19 @@
 experiment_name: "heart_disease_baseline"
 
 data:
-  dvc_path: "data/raw/heart.csv"
+  dvc_path: data/combined/heart_reference.csv
   target: "target"
   test_size: 0.2
-  random_state: 42
+  
 
 model:
-  type: "RandomForestClassifier"
-  n_estimators: 300
-  max_depth: 8
+  n_estimators: 200
+  max_depth: 10
   min_samples_split: 2
   min_samples_leaf: 1
   n_jobs: -1
+  random_state: 42
+
 
 training:
   primary_metric: "f1"

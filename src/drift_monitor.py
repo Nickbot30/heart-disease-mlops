@@ -3,16 +3,16 @@ from pathlib import Path
 
 import pandas as pd
 from evidently.report import Report
-from evidently.metrics import DataDriftPreset
-
+from evidently.metric_preset import DataDriftPreset
 from src.data import load_data
 
 
 def main(
-    reference_path: str = "data/raw/heart.csv",
-    production_path: str = "data/production/heart_prod.csv",
+    reference_path: str = "data/combined/heart_reference.csv",
+    production_path: str = "data/production/heart_production.csv",
     threshold: float = 0.3,
 ):
+
     ref = load_data(reference_path)
     prod = load_data(production_path)
 
