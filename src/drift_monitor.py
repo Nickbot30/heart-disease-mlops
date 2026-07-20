@@ -1,6 +1,5 @@
 import sys
 from pathlib import Path
-
 import pandas as pd
 from evidently.report import Report
 from evidently.metric_preset import DataDriftPreset

@@ -1,5 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+
+
 *.py[codz]
 *$py.class
 
@@ -216,3 +218,21 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# MLflow artifacts
+mlruns/
+**/model.pkl
+**/MLmodel
+**/python_env.yaml
+**/conda.yaml
+**/requirements.txt
+
+# DVC cache
+.dvc/cache/
+
+# VS Code
+.vscode/
+
+# Ignore raw CSV data, keep DVC pointer files
+data/**/*.csv
+!data/**/*.csv.dvc

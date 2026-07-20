@@ -4,7 +4,6 @@ data:
   dvc_path: data/combined/heart_reference.csv
   target: "target"
   test_size: 0.2
-  
 
 model:
   n_estimators: 200
@@ -14,7 +13,6 @@ model:
   n_jobs: -1
   random_state: 42
 
-
 training:
   primary_metric: "f1"
   metrics:
@@ -23,4 +21,5 @@ training:
     - "recall"
     - "f1"
   min_f1: 0.78
+
 
