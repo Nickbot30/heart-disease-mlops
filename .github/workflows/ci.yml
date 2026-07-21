@@ -14,6 +14,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -23,9 +31,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip uninstall -y pathspec
-          pip install pathspec==0.11.2
-          pip install dvc
           pip install -e .
 
       - name: Pull DVC data
@@ -42,6 +47,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -51,9 +64,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip uninstall -y pathspec
-          pip install pathspec==0.11.2
-          pip install dvc
+          pip install -e .
 
       - name: Pull DVC data
         run: dvc pull
@@ -68,4 +79,5 @@ jobs:
         with:
           name: mlflow-artifacts
           path: mlruns/
+
 
