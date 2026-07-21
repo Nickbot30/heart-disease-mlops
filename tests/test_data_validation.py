@@ -1,4 +1,4 @@
-from src.data import load_data
+from heart_disease_mlops.data import load_data
 
 
 def test_expected_columns_present():

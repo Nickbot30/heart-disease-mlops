@@ -13,8 +13,8 @@ from sklearn.metrics import (
     f1_score,
 )
 
-from src.data import load_data, train_test_split_data
-from src.features import build_preprocessor
+from heart_disease_mlops.data import load_data
+from heart_disease_mlops.features import build_preprocessor
 
 
 def load_config(path: str):

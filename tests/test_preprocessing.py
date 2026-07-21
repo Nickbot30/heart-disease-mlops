@@ -1,5 +1,5 @@
 import pandas as pd
-from src.features import build_preprocessor
+from heart_disease_mlops.features import build_preprocessor
 
 
 def sample_df():

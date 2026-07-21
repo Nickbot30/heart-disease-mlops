@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 from evidently.report import Report
 from evidently.metric_preset import DataDriftPreset
-from src.data import load_data
+from heart_disease_mlops.data import load_data
 
 
 def main(
