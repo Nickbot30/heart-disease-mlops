@@ -1,4 +1,6 @@
 [core]
-    remote = localremote
+    remote = origin_remote
 ['remote "localremote"']
     url = /Users/nick/dvcstore
+['remote "origin_remote"']
+    url = ../dvc_remote
