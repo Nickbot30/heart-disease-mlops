@@ -13,7 +13,7 @@ from sklearn.metrics import (
     f1_score,
 )
 
-from heart_disease_mlops.data import load_data
+from heart_disease_mlops.data import load_data, train_test_split_data
 from heart_disease_mlops.features import build_preprocessor
 
 
