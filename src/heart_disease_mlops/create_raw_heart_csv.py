@@ -16,8 +16,13 @@ def load_raw(path: str) -> pd.DataFrame:
     )
 
 def drop_invalid_chol(df: pd.DataFrame) -> pd.DataFrame:
-    df = df[df["chol"].notna()]      # remove NaN
-    df = df[df["chol"] > 0]          # enforce positive values
+    df = df[df["chol"].notna()]
+    df = df[df["chol"] > 0]
+    return df
+
+def drop_invalid_trestbps(df: pd.DataFrame) -> pd.DataFrame:
+    df = df[df["trestbps"].notna()]
+    df = df[df["trestbps"] > 0]
     return df
 
 def convert_class_to_target(df: pd.DataFrame) -> pd.DataFrame:
@@ -36,6 +41,7 @@ def create_raw_heart_csv():
     combined = pd.concat(dfs, ignore_index=True)
 
     combined = drop_invalid_chol(combined)
+    combined = drop_invalid_trestbps(combined)
     combined = convert_class_to_target(combined)
 
     Path("data/raw").mkdir(parents=True, exist_ok=True)
@@ -47,6 +53,7 @@ def create_raw_heart_csv():
 
 if __name__ == "__main__":
     create_raw_heart_csv()
+
 
 
 
