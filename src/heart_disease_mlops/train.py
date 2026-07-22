@@ -26,15 +26,15 @@ def main(config_path: str = "configs/train_config.yaml"):
     config = load_config(config_path)
 
     df = load_data(config["data"]["dvc_path"])
+
     X_train, X_test, y_train, y_test = train_test_split_data(
-    df,
-    config["data"]["target"],
-    config["data"]["test_size"],
-    config["model"]["random_state"],
-)
+        df,
+        config["data"]["target"],
+        config["data"]["test_size"],
+        config["model"]["random_state"],
+    )
 
-
-    preprocessor, _, _= build_preprocessor(df, config["data"]["target"])
+    preprocessor, _, _ = build_preprocessor(df, config["data"]["target"])
 
     print("CONFIG INSIDE TRAIN:", config)
 
@@ -52,6 +52,8 @@ def main(config_path: str = "configs/train_config.yaml"):
         ("model", model),
     ])
 
+    # Force MLflow to use a local artifact store (works on Mac + GitHub Actions)
+    mlflow.set_tracking_uri("file:./mlruns")
     mlflow.set_experiment(config["experiment_name"])
 
     with mlflow.start_run():
