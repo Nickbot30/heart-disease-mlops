@@ -52,9 +52,25 @@ def main(config_path: str = "configs/train_config.yaml"):
         ("model", model),
     ])
 
-    # Force MLflow to use a local artifact store (works on Mac + GitHub Actions)
+    # ============================================================
+    # FIX FOR GITHUB ACTIONS — FORCE MLflow TO USE LOCAL ARTIFACT STORE
+    # ============================================================
+
     mlflow.set_tracking_uri("file:./mlruns")
-    mlflow.set_experiment(config["experiment_name"])
+
+    client = mlflow.tracking.MlflowClient()
+    exp_name = config["experiment_name"]
+
+    # Delete old experiment if it contains a Mac-only /Users/... path
+    existing = client.get_experiment_by_name(exp_name)
+    if existing:
+        client.delete_experiment(existing.experiment_id)
+
+    # Create a fresh experiment with a safe artifact path
+    mlflow.create_experiment(exp_name, artifact_location="file:./mlruns")
+    mlflow.set_experiment(exp_name)
+
+    # ============================================================
 
     with mlflow.start_run():
         for k, v in config["model"].items():
@@ -89,4 +105,5 @@ def main(config_path: str = "configs/train_config.yaml"):
 
 if __name__ == "__main__":
     main()
+
 
