@@ -15,6 +15,11 @@ def load_raw(path: str) -> pd.DataFrame:
         na_values=["?"]
     )
 
+def drop_invalid_chol(df: pd.DataFrame) -> pd.DataFrame:
+    df = df[df["chol"].notna()]      # remove NaN
+    df = df[df["chol"] > 0]          # enforce positive values
+    return df
+
 def convert_class_to_target(df: pd.DataFrame) -> pd.DataFrame:
     df["target"] = (df["class"] > 0).astype(int)
     return df.drop(columns=["class"])
@@ -29,6 +34,8 @@ def create_raw_heart_csv():
 
     dfs = [load_raw(f) for f in files]
     combined = pd.concat(dfs, ignore_index=True)
+
+    combined = drop_invalid_chol(combined)
     combined = convert_class_to_target(combined)
 
     Path("data/raw").mkdir(parents=True, exist_ok=True)
@@ -40,6 +47,7 @@ def create_raw_heart_csv():
 
 if __name__ == "__main__":
     create_raw_heart_csv()
+
 
 
 

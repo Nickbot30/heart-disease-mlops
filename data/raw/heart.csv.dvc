@@ -1,5 +1,5 @@
 outs:
-- md5: 36de28cf4e7f48fc8eeae823ac634258
-  size: 50217
+- md5: 1d21baa1fd4a1ae9674db07a34905fc0
+  size: 40013
   hash: md5
   path: heart.csv
