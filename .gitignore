@@ -233,6 +233,4 @@ mlruns/
 # VS Code
 .vscode/
 
-# Ignore raw CSV data, keep DVC pointer files
-data/**/*.csv
-!data/**/*.csv.dvc
+
