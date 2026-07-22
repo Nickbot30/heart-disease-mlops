@@ -17,14 +17,15 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Fix pathspec BEFORE installing dependencies
+        run: |
+          pip uninstall -y pathspec || true
+          pip install pathspec==0.11.2
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-
-      - name: Fix pathspec for DVC
-        run: |
-          pip uninstall -y pathspec
-          pip install pathspec==0.11.2
+          pip install -e .
           pip install --upgrade dvc
 
       - name: DVC pull
@@ -44,14 +45,15 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Fix pathspec BEFORE installing dependencies
+        run: |
+          pip uninstall -y pathspec || true
+          pip install pathspec==0.11.2
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-
-      - name: Fix pathspec for DVC
-        run: |
-          pip uninstall -y pathspec
-          pip install pathspec==0.11.2
+          pip install -e .
           pip install --upgrade dvc
 
       - name: DVC pull
@@ -59,4 +61,6 @@ jobs:
 
       - name: Train model
         run: python src/heart_disease_mlops/train.py
+
+
 
